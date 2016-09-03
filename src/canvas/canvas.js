@@ -109,20 +109,6 @@ const getBase64 = (canvas) => {
     return canvas.toDataURL().split(',')[1];
 };
 
-const saveCanvas = (canvas, filename) => {
-    const canvasBase64 = getBase64(canvas);
-    const buffer = new Buffer(canvasBase64, 'base64');
-    const outPath = path.join(__dirname + '/../../dist/img/' + filename);
-    return new Promise((resolve, reject) => {
-        fs.writeFile(outPath, buffer, error => {
-            if (error) {
-                reject(error);
-            }
-            resolve(outPath);
-        })
-    });
-};
-
 const convert = (type, url) => {
     return new Promise((resolve, reject) => {
         const imagePath = url ? url : path.join(__dirname + '/../../demo/img/sample.jpg');

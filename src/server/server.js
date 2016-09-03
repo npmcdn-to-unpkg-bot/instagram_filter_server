@@ -11,7 +11,6 @@ const corser = require('corser');
 
 const routes = require('../routes/routes');
 
-
 const setupServer = (app) => {
     return new Promise(resolve => {
         app.use(bodyParser.urlencoded({

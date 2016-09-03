@@ -3,7 +3,7 @@
  */
 
 const winston = require('winston');
-const canvas = require('../canvas/canvas');
+const instaFilter = require('instagram_js_filter');
 
 const sendErrorResponse = (req, res, error, statusCode) => {
     const errorMessage = {
@@ -20,17 +20,6 @@ const sendResponse = (status, res, data) => {
     return res.status(status)
         .type('application/json')
         .json(data);
-};
-
-const sendFile = (res, convertedFilePath) => {
-    const options = {
-        dotfiles: 'deny',
-        headers: {
-            'x-instaimage-timestamp': Date.now(),
-            'x-instaimage-sent': true
-        }
-    };
-    return res.sendFile(convertedFilePath, options);
 };
 
 const getObjType = (req) => {
@@ -58,7 +47,7 @@ const configRoutes = (app) => {
     app.post('/:obj_type', (req, res) => {
         const objType = getObjType(req);
         const objMap = getObjMap(req);
-        canvas.convert(objMap.type)
+        filter.filter(objMap.type)
             .then(base64 => {
                 sendResponse(200, res, {
                     endpoint: objType,
