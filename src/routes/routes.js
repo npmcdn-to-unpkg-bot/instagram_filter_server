@@ -3,7 +3,7 @@
  */
 
 const winston = require('winston');
-const instaFilter = require('instagram_js_filter');
+const Filter = require('instagram_js_filter');
 
 const sendErrorResponse = (req, res, error, statusCode) => {
     const errorMessage = {
@@ -47,7 +47,8 @@ const configRoutes = (app) => {
     app.post('/:obj_type', (req, res) => {
         const objType = getObjType(req);
         const objMap = getObjMap(req);
-        filter.filter(objMap.type)
+        console.log(objMap.type);
+        Filter.filter(objMap.type)
             .then(base64 => {
                 sendResponse(200, res, {
                     endpoint: objType,

@@ -69,15 +69,15 @@ var Header = React.createClass({
         return (
             <header className="header">
                 <nav className="header-nav">
-                    <HeaderTitle />
-                    <HeaderLink />
+                    <Header.Title />
+                    <Header.Link />
                 </nav>
             </header>
         )
     }
 });
 
-var HeaderTitle = React.createClass({
+Header.Title = React.createClass({
     render: function () {
         return (
             <div className="header-div">
@@ -91,11 +91,11 @@ var HeaderTitle = React.createClass({
     }
 });
 
-var HeaderLink = React.createClass({
+Header.Link = React.createClass({
     render: function () {
         var rows = [];
         types.forEach(function (type) {
-            rows.push(<HeaderLinkItem type={type} key={type}/>);
+            rows.push(<Header.Link.Item type={type} key={type}/>);
         });
         return (
             <ul className="header-nav-ul">
@@ -105,7 +105,7 @@ var HeaderLink = React.createClass({
     }
 });
 
-var HeaderLinkItem = React.createClass({
+Header.Link.Item = React.createClass({
     render: function () {
         var typeName = this.props.type;
         return (
@@ -123,17 +123,17 @@ var Main = React.createClass({
     render: function () {
         return (
             <main className="main">>
-                <MainArticleList/>
+                <Main.ArticleList/>
             </main>
         );
     }
 });
 
-var MainArticleList = React.createClass({
+Main.ArticleList = React.createClass({
     render: function () {
         var rows = [];
         types.forEach(function (type) {
-            rows.push(<MainArticleItem type={type} key={type}/>);
+            rows.push(<Main.ArticleItem type={type} key={type}/>);
         });
         return (
             <article className="main-article">
@@ -143,19 +143,19 @@ var MainArticleList = React.createClass({
     }
 });
 
-var MainArticleItem = React.createClass({
+Main.ArticleItem = React.createClass({
     render: function () {
         var typeNameLowerCase = this.props.type.toLowerCase();
         return (
             <div>
-                <MainArticleItemHeader type={typeNameLowerCase}/>
-                <MainArticleItemImage type={typeNameLowerCase}/>
+                <Main.ArticleItem.Header type={typeNameLowerCase}/>
+                <Main.ArticleItem.Image type={typeNameLowerCase}/>
             </div>
         )
     }
 });
 
-var MainArticleItemHeader = React.createClass({
+Main.ArticleItem.Header = React.createClass({
     render: function () {
         const typeName = this.props.type;
         return (
@@ -167,7 +167,7 @@ var MainArticleItemHeader = React.createClass({
     }
 });
 
-var MainArticleItemImage = React.createClass({
+Main.ArticleItem.Image = React.createClass({
     loadImageFile: function () {
         const typeName = this.props.type;
         $.ajax({

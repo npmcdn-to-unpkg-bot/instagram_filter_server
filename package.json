@@ -42,7 +42,7 @@
     "corser": "^2.0.1",
     "express": "^4.14.0",
     "helmet": "^2.1.2",
-    "instagram_js_filter": "1.1.4",
+    "instagram_js_filter": "1.1.7",
     "minimist": "1.2.0",
     "morgan": "^1.7.0",
     "winston": "^2.2.0"
